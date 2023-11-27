@@ -5,7 +5,7 @@ export const products = [
     description: "An apple mobile which is nothing like apple",
     price: 549,
     discountPercentage: 12.96,
-    rating: 1,
+    rating: 2.5,
     stock: 94,
     brand: "Apple",
     category: "smartphones",
@@ -16,6 +16,23 @@ export const products = [
       "https://i.dummyjson.com/data/products/1/3.jpg",
       "https://i.dummyjson.com/data/products/1/4.jpg",
       "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
+    ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+        rate:"4.7",
+        image: "/images/user.jpeg",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        rate:"3",
+        date: "2023-02-02",
+      },
     ],
   },
   {
@@ -35,6 +52,20 @@ export const products = [
       "https://i.dummyjson.com/data/products/2/2.jpg",
       "https://i.dummyjson.com/data/products/2/3.jpg",
       "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
+    ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        date: "2023-02-02",
+      },
     ],
   },
   {
@@ -69,6 +100,20 @@ export const products = [
       "https://i.dummyjson.com/data/products/4/4.jpg",
       "https://i.dummyjson.com/data/products/4/thumbnail.jpg",
     ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        date: "2023-02-02",
+      },
+    ],
   },
   {
     id: 5,
@@ -86,6 +131,20 @@ export const products = [
       "https://i.dummyjson.com/data/products/5/1.jpg",
       "https://i.dummyjson.com/data/products/5/2.jpg",
       "https://i.dummyjson.com/data/products/5/3.jpg",
+    ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        date: "2023-02-02",
+      },
     ],
   },
   {
@@ -106,6 +165,20 @@ export const products = [
       "https://i.dummyjson.com/data/products/6/3.png",
       "https://i.dummyjson.com/data/products/6/4.jpg",
     ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        date: "2023-02-02",
+      },
+    ],
   },
   {
     id: 7,
@@ -124,6 +197,20 @@ export const products = [
       "https://i.dummyjson.com/data/products/7/2.jpg",
       "https://i.dummyjson.com/data/products/7/3.jpg",
       "https://i.dummyjson.com/data/products/7/thumbnail.jpg",
+    ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        date: "2023-02-02",
+      },
     ],
   },
   {
@@ -145,6 +232,20 @@ export const products = [
       "https://i.dummyjson.com/data/products/8/4.jpg",
       "https://i.dummyjson.com/data/products/8/thumbnail.jpg",
     ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        date: "2023-02-02",
+      },
+    ],
   },
   {
     id: 9,
@@ -165,6 +266,20 @@ export const products = [
       "https://i.dummyjson.com/data/products/9/4.jpg",
       "https://i.dummyjson.com/data/products/9/thumbnail.jpg",
     ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        date: "2023-02-02",
+      },
+    ],
   },
   {
     id: 10,
@@ -183,6 +298,20 @@ export const products = [
       "https://i.dummyjson.com/data/products/10/2.jpg",
       "https://i.dummyjson.com/data/products/10/3.jpg",
       "https://i.dummyjson.com/data/products/10/thumbnail.jpeg",
+    ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        date: "2023-02-02",
+      },
     ],
   },
   {
@@ -203,6 +332,20 @@ export const products = [
       "https://i.dummyjson.com/data/products/11/3.jpg",
       "https://i.dummyjson.com/data/products/11/thumbnail.jpg",
     ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        date: "2023-02-02",
+      },
+    ],
   },
   {
     id: 12,
@@ -221,6 +364,20 @@ export const products = [
       "https://i.dummyjson.com/data/products/12/3.png",
       "https://i.dummyjson.com/data/products/12/4.jpg",
       "https://i.dummyjson.com/data/products/12/thumbnail.jpg",
+    ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        date: "2023-02-02",
+      },
     ],
   },
   {
@@ -242,6 +399,20 @@ export const products = [
       "https://i.dummyjson.com/data/products/13/4.jpg",
       "https://i.dummyjson.com/data/products/13/thumbnail.webp",
     ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        date: "2023-02-02",
+      },
+    ],
   },
   {
     id: 14,
@@ -260,6 +431,20 @@ export const products = [
       "https://i.dummyjson.com/data/products/14/2.jpg",
       "https://i.dummyjson.com/data/products/14/3.jpg",
       "https://i.dummyjson.com/data/products/14/thumbnail.jpg",
+    ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        date: "2023-02-02",
+      },
     ],
   },
   {
@@ -281,6 +466,20 @@ export const products = [
       "https://i.dummyjson.com/data/products/15/4.jpg",
       "https://i.dummyjson.com/data/products/15/thumbnail.jpg",
     ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        date: "2023-02-02",
+      },
+    ],
   },
   {
     id: 16,
@@ -301,6 +500,20 @@ export const products = [
       "https://i.dummyjson.com/data/products/16/4.jpg",
       "https://i.dummyjson.com/data/products/16/thumbnail.jpg",
     ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        date: "2023-02-02",
+      },
+    ],
   },
   {
     id: 17,
@@ -319,6 +532,20 @@ export const products = [
       "https://i.dummyjson.com/data/products/17/2.jpg",
       "https://i.dummyjson.com/data/products/17/3.jpg",
       "https://i.dummyjson.com/data/products/17/thumbnail.jpg",
+    ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        date: "2023-02-02",
+      },
     ],
   },
   {
@@ -340,6 +567,20 @@ export const products = [
       "https://i.dummyjson.com/data/products/18/4.jpg",
       "https://i.dummyjson.com/data/products/18/thumbnail.jpg",
     ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        date: "2023-02-02",
+      },
+    ],
   },
   {
     id: 19,
@@ -358,6 +599,20 @@ export const products = [
       "https://i.dummyjson.com/data/products/19/2.jpg",
       "https://i.dummyjson.com/data/products/19/3.png",
       "https://i.dummyjson.com/data/products/19/thumbnail.jpg",
+    ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        date: "2023-02-02",
+      },
     ],
   },
   {
@@ -379,6 +634,20 @@ export const products = [
       "https://i.dummyjson.com/data/products/20/4.jpg",
       "https://i.dummyjson.com/data/products/20/thumbnail.jpg",
     ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        date: "2023-02-02",
+      },
+    ],
   },
   {
     id: 21,
@@ -396,6 +665,20 @@ export const products = [
       "https://i.dummyjson.com/data/products/21/2.jpg",
       "https://i.dummyjson.com/data/products/21/3.jpg",
     ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        date: "2023-02-02",
+      },
+    ],
   },
   {
     id: 22,
@@ -412,6 +695,20 @@ export const products = [
       "https://i.dummyjson.com/data/products/22/1.jpg",
       "https://i.dummyjson.com/data/products/22/2.jpg",
       "https://i.dummyjson.com/data/products/22/3.jpg",
+    ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        date: "2023-02-02",
+      },
     ],
   },
   {
@@ -433,6 +730,20 @@ export const products = [
       "https://i.dummyjson.com/data/products/23/4.jpg",
       "https://i.dummyjson.com/data/products/23/thumbnail.jpg",
     ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        date: "2023-02-02",
+      },
+    ],
   },
   {
     id: 24,
@@ -453,6 +764,20 @@ export const products = [
       "https://i.dummyjson.com/data/products/24/4.jpg",
       "https://i.dummyjson.com/data/products/24/thumbnail.jpg",
     ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        date: "2023-02-02",
+      },
+    ],
   },
   {
     id: 25,
@@ -471,6 +796,20 @@ export const products = [
       "https://i.dummyjson.com/data/products/25/3.png",
       "https://i.dummyjson.com/data/products/25/4.jpg",
       "https://i.dummyjson.com/data/products/25/thumbnail.jpg",
+    ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        date: "2023-02-02",
+      },
     ],
   },
   {
@@ -493,6 +832,20 @@ export const products = [
       "https://i.dummyjson.com/data/products/26/5.jpg",
       "https://i.dummyjson.com/data/products/26/thumbnail.jpg",
     ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        date: "2023-02-02",
+      },
+    ],
   },
   {
     id: 27,
@@ -512,6 +865,20 @@ export const products = [
       "https://i.dummyjson.com/data/products/27/3.jpg",
       "https://i.dummyjson.com/data/products/27/4.jpg",
       "https://i.dummyjson.com/data/products/27/thumbnail.webp",
+    ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        date: "2023-02-02",
+      },
     ],
   },
   {
@@ -533,6 +900,20 @@ export const products = [
       "https://i.dummyjson.com/data/products/28/4.jpg",
       "https://i.dummyjson.com/data/products/28/thumbnail.jpg",
     ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        date: "2023-02-02",
+      },
+    ],
   },
   {
     id: 29,
@@ -553,6 +934,20 @@ export const products = [
       "https://i.dummyjson.com/data/products/29/4.webp",
       "https://i.dummyjson.com/data/products/29/thumbnail.webp",
     ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        date: "2023-02-02",
+      },
+    ],
   },
   {
     id: 30,
@@ -571,6 +966,20 @@ export const products = [
       "https://i.dummyjson.com/data/products/30/2.jpg",
       "https://i.dummyjson.com/data/products/30/3.jpg",
       "https://i.dummyjson.com/data/products/30/thumbnail.jpg",
+    ],
+    comments: [
+      {
+        id: 1,
+        user: "JohnDoe123",
+        text: "Great phone! I love the camera quality.",
+        date: "2023-01-15",
+      },
+      {
+        id: 2,
+        user: "TechGeek",
+        text: "The battery life is impressive. Worth the price!",
+        date: "2023-02-02",
+      },
     ],
   },
 ];

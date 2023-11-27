@@ -8,9 +8,11 @@ export default function Heading({ center, text }) {
         center ? "text-center" : "text-start"
       } `}
     >
-      <p>{text}</p>
+      <p className="border text-slate-600 rounded-full px-2 py-1 text-center flex items-center justify-center mb-2 w-52">
+        {text}
+      </p>
 
-      <div className="flex items-center gap-4 sm:gap-10 flex-wrap">
+      <div className="grid lg:grid-cols-4 grid-cols-2 gap-10">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
