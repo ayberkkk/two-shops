@@ -3,7 +3,7 @@ import Avatar from "../general/Avatar";
 
 export default function Comments({ comment }) {
   return (
-    <div className="w-1/3 flex bg-white p-4 rounded-md shadow-md my-4">
+    <div className="flex bg-white p-4 rounded-md shadow-md my-4">
       <Avatar image={comment?.image} />
       <div className="ml-4">
         <div className="flex items-center justify-between">
