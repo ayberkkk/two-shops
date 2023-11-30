@@ -1,11 +1,14 @@
 "use client";
 import React, { useState } from "react";
 import { useCart } from "@/context/CartContext";
-import { Rating } from "@mui/material";
 import Counter from "../general/Counter";
 import Button from "../general/Button";
 import Comments from "./Comment";
-import ReactImageMagnify from "react-image-magnify";
+import StarRating from "../general/StarRating";
+import Image from "next/image";
+import { MdOutlineDiscount } from "react-icons/md";
+import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+import { IoIosCloseCircleOutline } from "react-icons/io";
 
 export default function DetailClient({ product }) {
   const [cardProduct, setCardProduct] = useState({
@@ -41,42 +44,40 @@ export default function DetailClient({ product }) {
     (product.price * (100 - product.discountPercentage)) / 100;
 
   return (
-    <div className="container mx-auto mt-28">
+    <div className="container mx-auto lg:mt-28 mt-16">
       <div className="grid lg:grid-cols-2">
         <div className="lg:flex block items-center w-full gap-10">
           <div className="thumbnails lg:block hidden">
             {product.images.map((image, index) => (
               <img
-                className={`w-[90px] h-[90px] mb-2 cursor-pointer ${
+                className={`w-[90px] h-[90px] mb-2 cursor-pointer overflow-y-auto p-2 rounded-lg ${
                   selectedImageIndex === index ? "border border-orange-500" : ""
                 }`}
                 key={index}
                 src={image}
+                title={`thumbnail-${index}`}
                 alt={`thumbnail-${index}`}
                 onClick={() => handleThumbnailClick(index)}
               />
             ))}
           </div>
-          <div className="border rounded-md">
-            <ReactImageMagnify
-              className="w-full h-auto"
-              {...{
-                smallImage: {
-                  alt: product.title,
-                  isFluidWidth: false,
-                  src: product.images[selectedImageIndex],
-                },
-                largeImage: {
-                  src: product.images[selectedImageIndex],
-                  width: 1000,
-                  height: 1000,
-                },
-                enlargedImageContainerStyle: {
-                  background: "#fff",
-                  zIndex: 9,
-                },
-              }}
-            />
+          <div className="border rounded-md relative">
+            <Image
+              className="lg:w-[600px] lg:h-[500px] w-[500px] h-[400px]"
+              width={100}
+              height={500}
+              src={product.images[selectedImageIndex]}
+              title={product.title}
+              alt={product.title}
+            ></Image>
+            {product.discountPercentage > 0 && (
+              <div className="absolute top-4 right-4">
+                <div className="flex items-center gap-1 text-base font-semibold bg-red-500 p-2 text-white rounded-lg w-full">
+                  <MdOutlineDiscount size={25} />
+                  -%{product.discountPercentage}
+                </div>
+              </div>
+            )}
           </div>
           <div className="thumbnails lg:hidden flex items-center p-3 overflow-x-auto">
             {product.images.map((image, index) => (
@@ -86,6 +87,7 @@ export default function DetailClient({ product }) {
                 }`}
                 key={index}
                 src={image}
+                title={`thumbnail-${index}`}
                 alt={`thumbnail-${index}`}
                 onClick={() => handleThumbnailClick(index)}
               />
@@ -93,58 +95,60 @@ export default function DetailClient({ product }) {
           </div>
         </div>
         <div className="p-3">
-          <div className="flex items-center justify-between">
-            <h1 className="lg:text-5xl text-3xl font-semibold mb-4">
+          <div className="border border-gray-400 lg:w-1/5 w-1/3  rounded-lg mb-4 text-orange-500 font-bold lg:pl-2 px-1 p-1">
+            <span className="underline">twoShops.</span>
+            <span className="font-extralight">com</span>
+          </div>
+          <div className="lg:flex items-center justify-between mb-4">
+            <h1 className="lg:text-5xl text-3xl font-semibold mb-2 lg:mb-0">
               {product.title}
             </h1>
             <div className="flex items-center gap-3">
-              <p className="text-sm text-gray-500">({product.rating} )</p>
-              <Rating name="read-only" value={product.rating} readOnly />
+              <StarRating rating={product.rating} />
+              <p className="text-xs text-gray-500">({product.rating})</p>
             </div>
           </div>
-          <h2 className="text-xl font-semibold mb-2">Description</h2>
-          <p className="text-lg mb-4">{product.description}</p>
-          <p className="text-lg mb-2"></p>
-          <div className="text-lg mb-2 font-bold border lg:w-1/4 text-center text-white rounded-lg">
+          <div className="mb-4">
+            <h2 className="text-xl font-semibold mb-2">Description</h2>
+            <p className="text-lg">{product.description}</p>
+          </div>
+          <div className="text-lg mb-4 font-bold">
             {product.stock ? (
-              <p className="bg-green-500 p-2">Stock Available</p>
+              <p className="text-green-500 flex items-center gap-2">
+                <IoMdCheckmarkCircleOutline size={24} /> Stock Available
+              </p>
             ) : (
-              <p className="bg-red-500 p-2">Stock Not Available</p>
+              <p className="text-red-500 p-2  flex items-center gap-2">
+                <IoIosCloseCircleOutline size={24} /> Stock Not Available
+              </p>
             )}
           </div>
-          <div className="lg:flex items-center justify-between mt-10">
-            <div className="lg:flex items-center">
-              {product.discountPercentage > 0 && (
-                <p className="text-xl text-red-500 line-through mr-3">
-                  ${product.price}
-                </p>
-              )}
-              {product.discountPercentage > 0 && (
-                <div className="text-sm bg-red-500 p-1 text-white rounded-lg w-1/4">
-                  {product.discountPercentage}% OFF
-                </div>
-              )}
-              <p
-                className={`text-3xl font-semibold ${
-                  product.discountPercentage > 0 ? "text-green-500" : ""
-                }`}
-              >
-                ${discountedPrice.toFixed(2)}
+          <div className="mb-4">
+            {product.discountPercentage > 0 && (
+              <p className="text-xl text-red-500 line-through">
+                ${product.price}
               </p>
-            </div>
-            <div className="flex items-center gap-10">
-              <Button text="Add" small onClick={() => addToCart(cardProduct)} />
-              <Counter
-                cardProduct={cardProduct}
-                increaseFunc={increaseFunc}
-                decreaseFunc={decreaseFunc}
-              />
-            </div>
+            )}
+            <p
+              className={`text-5xl font-semibold ${
+                product.discountPercentage > 0 ? "text-green-500" : ""
+              }`}
+            >
+              ${discountedPrice.toFixed(2)}
+            </p>
+          </div>
+          <div className="lg:relative fixed bottom-0 left-0 right-0 lg:backdrop-blur-none lg:bg-transparent backdrop-blur-sm bg-orange-200/40 p-2 flex items-center gap-10">
+            <Counter
+              cardProduct={cardProduct}
+              increaseFunc={increaseFunc}
+              decreaseFunc={decreaseFunc}
+            />
+            <Button text="Add" size onClick={() => addToCart(cardProduct)} />
           </div>
         </div>
       </div>
       {product?.comments?.map((comment) => (
-        <Comments key={comment.id} comment={comment} />
+        <Comments key={comment.id} comment={comment} rating={comment.rating} />
       ))}
     </div>
   );

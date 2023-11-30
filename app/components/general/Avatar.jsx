@@ -9,8 +9,8 @@ export default function Avatar({ image }) {
         width={40}
         height={40}
         src={image}
-        alt="user"
-        title="user"
+        title="User"
+        alt="User"
       />
     );
   return <TfiUser size={40} />;

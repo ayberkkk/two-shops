@@ -1,10 +1,10 @@
-const Button = ({ text, onClick, small, outline, disabled }) => {
+const Button = ({ text, onClick, size, outline, disabled }) => {
   return (
     <div>
       <button
         disabled={disabled}
-        className={`rounded-lg p-3 uppercase font-bold
-        ${small ? "w-[200px]" : "w-full"}
+        className={`rounded-lg p-3 uppercase font-bold 
+        ${size ? "lg:w-[600px] w-[200px]" : "w-full"}
         ${
           outline
             ? "border text-black"
