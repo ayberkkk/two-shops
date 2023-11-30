@@ -8,9 +8,11 @@ export default function StarRating({ rating }) {
 
   for (let i = 1; i <= maxRating; i++) {
     if (i <= fullStars) {
-      starIcons.push(<BsStarFill key={i} className="text-yellow-400" />);
+      starIcons.push(
+        <BsStarFill key={i} className="text-yellow-400 text-xs" />
+      );
     } else {
-      starIcons.push(<BsStar key={i} className=" text-gray-300" />);
+      starIcons.push(<BsStar key={i} className=" text-gray-300 text-xs" />);
     }
   }
 

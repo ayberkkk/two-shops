@@ -1,5 +1,6 @@
 import { products } from "@/utils/Products";
 import ProductCard from "../home/ProductCard";
+import Link from "next/link";
 
 export default function Heading({ center, text }) {
   return (
@@ -8,9 +9,14 @@ export default function Heading({ center, text }) {
         center ? "text-center" : "text-start"
       } `}
     >
-      <p className="border text-slate-600 rounded-full px-2 py-1 text-center flex items-center justify-center mb-2 w-52">
-        {text}
-      </p>
+      <div className="flex items-center">
+        <Link
+          href={"/"}
+          className="border text-slate-600 rounded-full min-w-[120px] px-3 py-2 mb-4 text-center flex items-center justify-center bg-transparent transition-all ease-in duration-300 hover:bg-orange-500 hover:text-white"
+        >
+          {text}
+        </Link>
+      </div>
 
       <div className="grid lg:grid-cols-4 grid-cols-2 gap-10">
         {products.map((product) => (

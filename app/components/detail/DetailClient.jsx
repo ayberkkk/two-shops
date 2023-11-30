@@ -44,23 +44,9 @@ export default function DetailClient({ product }) {
     (product.price * (100 - product.discountPercentage)) / 100;
 
   return (
-    <div className="container mx-auto lg:mt-28 mt-16">
+    <div className="container mx-auto lg:mt-28">
       <div className="grid lg:grid-cols-2">
-        <div className="lg:flex block items-center w-full gap-10">
-          <div className="thumbnails lg:block hidden">
-            {product.images.map((image, index) => (
-              <img
-                className={`w-[90px] h-[90px] mb-2 cursor-pointer overflow-y-auto p-2 rounded-lg ${
-                  selectedImageIndex === index ? "border border-orange-500" : ""
-                }`}
-                key={index}
-                src={image}
-                title={`thumbnail-${index}`}
-                alt={`thumbnail-${index}`}
-                onClick={() => handleThumbnailClick(index)}
-              />
-            ))}
-          </div>
+        <div className="lg:flex block items-center w-full gap-10 relative">
           <div className="border rounded-md relative">
             <Image
               className="lg:w-[600px] lg:h-[500px] w-[500px] h-[400px]"
@@ -78,20 +64,22 @@ export default function DetailClient({ product }) {
                 </div>
               </div>
             )}
-          </div>
-          <div className="thumbnails lg:hidden flex items-center p-3 overflow-x-auto">
-            {product.images.map((image, index) => (
-              <img
-                className={`w-[90px] h-[90px] mb-2 cursor-pointer${
-                  selectedImageIndex === index ? "border border-orange-500" : ""
-                }`}
-                key={index}
-                src={image}
-                title={`thumbnail-${index}`}
-                alt={`thumbnail-${index}`}
-                onClick={() => handleThumbnailClick(index)}
-              />
-            ))}
+            <div className="thumbnails lg:block flex items-center lg:p-0 p-3  lg:absolute relative overflow-x-auto z-50 top-0 lg:-right-28">
+              {product.images.map((image, index) => (
+                <img
+                  className={`w-[90px] h-[90px] mb-2 cursor-pointer overflow-y-auto p-2 rounded-lg ${
+                    selectedImageIndex === index
+                      ? "border border-orange-500"
+                      : ""
+                  }`}
+                  key={index}
+                  src={image}
+                  title={`thumbnail-${index}`}
+                  alt={`thumbnail-${index}`}
+                  onClick={() => handleThumbnailClick(index)}
+                />
+              ))}
+            </div>
           </div>
         </div>
         <div className="p-3">
