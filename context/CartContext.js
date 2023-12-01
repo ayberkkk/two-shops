@@ -5,32 +5,40 @@ import toast, { Toaster } from "react-hot-toast";
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-
   const isLocalStorageAvailable = () => {
     try {
       const key = "__storage_test__";
       window.localStorage.setItem(key, key);
+      const value = window.localStorage.getItem(key);
       window.localStorage.removeItem(key);
-      return true;
+      return value === key;
     } catch (e) {
       return false;
     }
   };
-  
+
   const initialCartItems = isLocalStorageAvailable()
-    ? JSON.parse(localStorage.getItem("cartItems")) || []
+    ? (() => {
+        try {
+          return JSON.parse(localStorage.getItem("cartItems")) || [];
+        } catch (error) {
+          console.error("Error parsing cart items from localStorage:", error);
+          return [];
+        }
+      })()
     : [];
 
   const [cartItems, setCartItems] = useState(initialCartItems);
 
   useEffect(() => {
-    if (isLocalStorageAvailable) {
+    if (isLocalStorageAvailable()) {
       localStorage.setItem("cartItems", JSON.stringify(cartItems));
     }
-  }, [cartItems, isLocalStorageAvailable]);
+  }, [cartItems]);
 
   const addToCart = (item) => {
     const index = cartItems.findIndex((p) => p.id === item.id);
+
     if (index !== -1) {
       const updatedCartItems = [...cartItems];
       updatedCartItems[index].quantity += item.quantity;
@@ -42,7 +50,18 @@ const CartProvider = ({ children }) => {
         type: "success",
       });
     } else {
-      setCartItems((prev) => [...prev, item]);
+      // Eğer indirim yüzdesi varsa, indirimli fiyatı hesapla
+      const discountedPrice =
+        item.discountPercentage && item.discountPercentage > 0
+          ? item.price - (item.price * item.discountPercentage) / 100
+          : item.price;
+
+      const newItem = {
+        ...item,
+        discountedPrice,
+      };
+
+      setCartItems((prev) => [...prev, newItem]);
       toast("Product added to cart!", {
         duration: 2000,
         position: "top-right",
@@ -62,7 +81,14 @@ const CartProvider = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart }}>
+    <CartContext.Provider
+      value={{
+        cartItems,
+        setCartItems,
+        addToCart,
+        removeFromCart,
+      }}
+    >
       {children}
       <Toaster />
     </CartContext.Provider>
@@ -72,7 +98,9 @@ const CartProvider = ({ children }) => {
 const useCart = () => {
   const context = useContext(CartContext);
   if (!context) {
-    throw new Error("useCart hook must be used within a CartProvider");
+    throw new Error(
+      "useCart hook must be used within a CartProvider. Make sure you have CartProvider wrapping your component tree."
+    );
   }
   return context;
 };

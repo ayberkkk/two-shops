@@ -5,6 +5,7 @@ import { CiShoppingBasket } from "react-icons/ci";
 import { Dialog, Transition } from "@headlessui/react";
 import Image from "next/image";
 import { IoIosCloseCircleOutline } from "react-icons/io";
+import Link from "next/link";
 
 export const CardCount = () => {
   const { cartItems, removeFromCart } = useCart();
@@ -16,17 +17,21 @@ export const CardCount = () => {
 
   const calculateSubtotal = () => {
     return cartItems.reduce((total, product) => {
-      return total + product.price * product.quantity;
+      const price = product.discountedPrice || product.price;
+      return total + price * product.quantity;
     }, 0);
   };
 
-  const discountPercentage =
-    cartItems.length > 0 ? cartItems[0].discountPercentage : 0;
+  const calculateDiscountedTotal = () => {
+    return cartItems.reduce((total, product) => {
+      const discountedPrice = product.discountedPrice || product.price;
+      return total + discountedPrice * product.quantity;
+    }, 0);
+  };
 
-  const discount = (calculateSubtotal() * discountPercentage) / 100;
-
-  const subtotal = calculateSubtotal() - discount;
-
+  const subtotal = calculateSubtotal();
+  const discountedTotal = calculateDiscountedTotal();
+  const totalDiscount = subtotal - discountedTotal;
   return (
     <div className="md:flex">
       <div className="relative" onClick={toggleModal}>
@@ -48,7 +53,6 @@ export const CardCount = () => {
           >
             <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
           </Transition.Child>
-
           <div className="fixed inset-0 overflow-hidden">
             <div className="absolute inset-0 overflow-hidden">
               <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
@@ -136,23 +140,21 @@ export const CardCount = () => {
                       </div>
                       <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                         <div className="flex items-center justify-between text-base font-medium text-gray-900">
-                          <p>Subtotal</p>
-                          <div>
-                            <span className="block line-through text-gray-500 text-sm text-end">
-                              ${calculateSubtotal().toFixed(2)}
-                            </span>
-                            <span className="block text-green-500 font-bold text-xl">
-                              ${subtotal.toFixed(2)}
-                            </span>
-                          </div>
+                          <p>Total</p>
+                          <span className="text-green-500 font-bold text-xl">
+                            ${discountedTotal.toFixed(2)}
+                          </span>
                         </div>
                         <p className="mt-0.5 text-sm text-gray-500">
                           Shipping and taxes calculated at checkout.
                         </p>
                         <div className="mt-6">
-                          <p className="flex items-center justify-center rounded-md border border-transparent bg-orange-500 px-6 py-3 text-base font-medium text-white shadow-sm transition-all ease-in duration-500 hover:bg-orange-700">
+                          <Link
+                            href="/basket"
+                            className="flex items-center justify-center rounded-md border border-transparent bg-orange-500 px-6 py-3 text-base font-medium text-white shadow-sm transition-all ease-in duration-500 hover:bg-orange-700"
+                          >
                             Checkout
-                          </p>
+                          </Link>
                         </div>
                         <div className="mt-6 flex justify-center text-center text-sm text-orange-500">
                           <button

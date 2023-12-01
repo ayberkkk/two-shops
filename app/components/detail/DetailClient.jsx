@@ -112,18 +112,20 @@ export default function DetailClient({ product }) {
             )}
           </div>
           <div className="mb-4">
-            {product.discountPercentage > 0 && (
-              <p className="text-xl text-red-500 line-through">
-                ${product.price}
+            {product.discountPercentage > 0 ? (
+              <>
+                <p className="text-xl text-red-500 line-through">
+                  ${product.price}
+                </p>
+                <p className="text-5xl font-semibold text-green-500">
+                  ${discountedPrice.toFixed(0)}
+                </p>
+              </>
+            ) : (
+              <p className="text-5xl font-semibold text-green-500">
+                ${product.price.toFixed(0)}
               </p>
             )}
-            <p
-              className={`text-5xl font-semibold ${
-                product.discountPercentage > 0 ? "text-green-500" : ""
-              }`}
-            >
-              ${discountedPrice.toFixed(2)}
-            </p>
           </div>
           <div className="lg:relative fixed bottom-0 left-0 right-0 lg:backdrop-blur-none lg:bg-transparent backdrop-blur-sm bg-orange-200/40 p-2 flex items-center gap-10">
             <Counter

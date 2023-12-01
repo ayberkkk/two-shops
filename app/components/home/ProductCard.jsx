@@ -4,7 +4,7 @@ import { IoIosLink } from "react-icons/io";
 
 export default function ProductCard({ product }) {
   return (
-    <Link href={`/product/${product.id}`} passHref>
+    <Link href={`/pages/product/${product.id}`}>
       <div className="shadow-lg transition-shadow ease-in hover:shadow-2xl border rounded-xl relative overflow-hidden">
         <div className="w-full h-[300px] relative">
           <Image
