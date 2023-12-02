@@ -1,29 +1,44 @@
 import Image from "next/image";
 import Link from "next/link";
-import { IoIosLink } from "react-icons/io";
+import FavoriteButton from "../general/Favorite";
 
 export default function ProductCard({ product }) {
   return (
-    <Link href={`/pages/product/${product.id}`}>
-      <div className="shadow-lg transition-shadow ease-in hover:shadow-2xl border rounded-xl relative overflow-hidden">
-        <div className="w-full h-[300px] relative">
-          <Image
-            className="object-cover rounded-t-xl h-[300px] max-h-full w-full"
-            width={100}
-            height={100}
-            src={product.thumbnail}
-            alt={product.title}
-          />
-          <div className="overlay absolute top-0 left-0 w-full h-full bg-black opacity-0 transition-opacity ease-in hover:opacity-50 flex items-center justify-center">
-            <IoIosLink className="text-white" size={40} />
-          </div>
+    <div className="shadow-lg transition-shadow ease-in hover:shadow-2xl border rounded-lg relative">
+      <div className="w-full lg:h-[420px]">
+        <Image
+          className="w-full lg:h-[300px] h-[200px] rounded-t-lg"
+          width={100}
+          height={100}
+          src={product.thumbnail}
+          alt={product.title}
+        />
+        <div className="absolute top-2 right-2 z-20">
+          <FavoriteButton productId={product.id} />
         </div>
-        <div className="absolute bottom-0 bg-orange-500 w-full rounded-t-full flex items-center justify-center">
-          <p className="mt-2 space-y-2 uppercase text-white text-base mb-2 font-semibold whitespace-nowrap">
-            {product.title}
-          </p>
-        </div>
+        <Link href={`/pages/product/${product.id}`}>
+          <article className="px-3 py-2 text-black text-base font-normal bg-transparent">
+            <p className="font-semibold">{product.title}</p>
+            <p>{product.brand}</p>
+            <div className="flex items-center gap-3">
+              {product.discountPercentage ? (
+                <>
+                  <p className="mt-4">
+                    $
+                    {(
+                      product.price -
+                      (product.price * product.discountPercentage) / 100
+                    ).toFixed(0)}
+                  </p>
+                  <p className="mt-4 line-through">${product.price}</p>
+                </>
+              ) : (
+                <p className="mt-4">${product.price}</p>
+              )}
+            </div>
+          </article>
+        </Link>
       </div>
-    </Link>
+    </div>
   );
 }

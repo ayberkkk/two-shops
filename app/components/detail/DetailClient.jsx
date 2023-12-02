@@ -9,6 +9,7 @@ import Image from "next/image";
 import { MdOutlineDiscount } from "react-icons/md";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { IoIosCloseCircleOutline } from "react-icons/io";
+import FavoriteButton from "../general/Favorite";
 
 export default function DetailClient({ product }) {
   const [cardProduct, setCardProduct] = useState({
@@ -127,12 +128,13 @@ export default function DetailClient({ product }) {
               </p>
             )}
           </div>
-          <div className="lg:relative fixed bottom-0 left-0 right-0 lg:backdrop-blur-none lg:bg-transparent backdrop-blur-sm bg-orange-200/40 p-2 flex items-center gap-10">
+          <div className="lg:relative fixed bottom-0 left-0 right-0 lg:backdrop-blur-none lg:bg-transparent backdrop-blur-sm bg-orange-200/40 p-2 flex items-center lg:gap-10 gap-5">
             <Counter
               cardProduct={cardProduct}
               increaseFunc={increaseFunc}
               decreaseFunc={decreaseFunc}
             />
+            <FavoriteButton productId={product.id} />
             <Button text="Add" size onClick={() => addToCart(cardProduct)} />
           </div>
         </div>

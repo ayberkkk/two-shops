@@ -3,8 +3,8 @@ const Button = ({ text, onClick, size, outline, disabled }) => {
     <div>
       <button
         disabled={disabled}
-        className={`rounded-lg p-3 uppercase font-bold 
-        ${size ? "lg:w-[600px] w-[200px]" : "w-full"}
+        className={`rounded-lg p-3 uppercase font-bold
+        ${size ? "lg:w-[450px] w-[170px]" : "w-full"}
         ${
           outline
             ? "border text-black"
