@@ -145,7 +145,7 @@ export const CardCount = () => {
                           <div className="flex items-center justify-between text-base font-medium text-gray-900">
                             <p>Total</p>
                             <span className="text-green-500 font-bold text-xl">
-                              ${discountedTotal.toFixed(2)}
+                              ${discountedTotal.toFixed(0)}
                             </span>
                           </div>
                           <p className="mt-0.5 text-sm text-gray-500">
@@ -154,6 +154,7 @@ export const CardCount = () => {
                           <div className="mt-6">
                             <Link
                               href="/basket"
+                              onClick={() => setIsOpen(false)}
                               className="flex items-center justify-center rounded-md border border-transparent bg-orange-500 px-6 py-3 text-base font-medium text-white shadow-sm transition-all ease-in duration-500 hover:bg-orange-700"
                             >
                               Checkout

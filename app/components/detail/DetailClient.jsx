@@ -48,7 +48,7 @@ export default function DetailClient({ product }) {
     <div className="container mx-auto lg:mt-28">
       <div className="grid lg:grid-cols-2">
         <div className="lg:flex block items-center w-full gap-10 relative">
-          <div className="border rounded-md relative">
+          <div className="border rounded-md relative -z-10">
             <Image
               className="lg:w-[600px] lg:h-[500px] w-[500px] h-[400px]"
               width={100}
@@ -84,9 +84,8 @@ export default function DetailClient({ product }) {
           </div>
         </div>
         <div className="p-3">
-          <div className="border border-gray-400 lg:w-1/5 w-1/3  rounded-lg mb-4 text-orange-500 font-bold lg:pl-2 px-1 p-1">
-            <span className="underline">twoShops.</span>
-            <span className="font-extralight">com</span>
+          <div className="border border-gray-400 lg:w-1/4 rounded-lg mb-4 text-orange-500 font-bold lg:pl-2 px-1 p-1">
+            {product.brand}
           </div>
           <div className="lg:flex items-center justify-between mb-4">
             <h1 className="lg:text-5xl text-3xl font-semibold mb-2 lg:mb-0">
@@ -128,7 +127,7 @@ export default function DetailClient({ product }) {
               </p>
             )}
           </div>
-          <div className="lg:relative fixed bottom-0 left-0 right-0 lg:backdrop-blur-none lg:bg-transparent backdrop-blur-sm bg-orange-200/40 p-2 flex items-center lg:gap-10 gap-5">
+          <div className="lg:relative z-10 fixed bottom-0 left-0 right-0 lg:backdrop-blur-none lg:bg-transparent backdrop-blur-sm bg-orange-200/40 p-2 flex items-center lg:gap-10 gap-5">
             <Counter
               cardProduct={cardProduct}
               increaseFunc={increaseFunc}
