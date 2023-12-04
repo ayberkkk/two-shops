@@ -13,11 +13,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <CartProvider>
-            <div className="flex flex-col min-h-screen">
-              <Header />
-              <main className="flex-grow">{children}</main>
-              <Footer />
-            </div>
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+          </div>
         </CartProvider>
       </body>
     </html>

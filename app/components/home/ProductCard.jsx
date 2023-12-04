@@ -1,20 +1,44 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import FavoriteButton from "../general/Favorite";
 import StarRating from "../general/StarRating";
+import { useState } from "react";
 
 export default function ProductCard({ product }) {
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const handleThumbnailClick = (index) => {
+    setSelectedImageIndex(index);
+  };
   return (
     <div className="shadow-lg transition-shadow ease-in hover:shadow-2xl border rounded-lg relative">
-      <Link href={`/pages/product/${product.id}`}>
-        <div className="w-full lg:h-[470px]">
+      <div className="w-full lg:h-[470px]">
+        <div className="relative">
           <Image
-            className="w-full lg:h-[300px] h-[200px] rounded-t-lg -z-10 relative"
+            className="w-full lg:h-[300px] h-[200px] rounded-t-lg -z-10 relative p-3"
             width={100}
             height={100}
-            src={product.thumbnail}
+            src={product.images[selectedImageIndex]}
             alt={product.title}
           />
+          <div className="lg:absolute bottom-1 lg:left-[10%] transform lg:-translate-x-[-15%] flex items-center justify-center z-50 overflow-x-auto">
+            {product.images.map((image, index) => (
+              <img
+                className={`lg:w-[45px] lg:h-[45px] mb-2 cursor-pointer overflow-y-auto p-2 rounded-lg relative transition-all duration-300 ease-in ${
+                  selectedImageIndex === index
+                    ? "border border-orange-500 lg:w-[60px] lg:h-[60px] lg:-top-3"
+                    : ""
+                }`}
+                key={index}
+                src={image}
+                title={`thumbnail-${index}`}
+                alt={`thumbnail-${index}`}
+                onClick={() => handleThumbnailClick(index)}
+              />
+            ))}
+          </div>
+        </div>
+        <Link href={`/pages/product/${product.id}`}>
           <div className="absolute top-2 right-2 -z-10">
             <FavoriteButton productId={product.id} />
           </div>
@@ -48,8 +72,8 @@ export default function ProductCard({ product }) {
               )}
             </div>
           </article>
-        </div>
-      </Link>
+        </Link>
+      </div>
     </div>
   );
 }
