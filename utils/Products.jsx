@@ -16,6 +16,8 @@ export const products = [
       "https://i.dummyjson.com/data/products/1/3.jpg",
       "https://i.dummyjson.com/data/products/1/4.jpg",
       "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
+      "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
+      "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
     ],
     comments: [
       {

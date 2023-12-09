@@ -50,7 +50,6 @@ const CartProvider = ({ children }) => {
         type: "success",
       });
     } else {
-      // Eğer indirim yüzdesi varsa, indirimli fiyatı hesapla
       const discountedPrice =
         item.discountPercentage && item.discountPercentage > 0
           ? item.price - (item.price * item.discountPercentage) / 100
@@ -80,6 +79,10 @@ const CartProvider = ({ children }) => {
     });
   };
 
+  const confirmOrder = () => {
+    setCartItems([]);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -87,6 +90,7 @@ const CartProvider = ({ children }) => {
         setCartItems,
         addToCart,
         removeFromCart,
+        confirmOrder,
       }}
     >
       {children}

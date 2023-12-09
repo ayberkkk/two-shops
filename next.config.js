@@ -9,6 +9,5 @@ module.exports = {
         hostname: "i.dummyjson.com",
       },
     ],
-    domains: ["i.dummyjson.com"],
   },
 };

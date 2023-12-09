@@ -6,7 +6,7 @@ import { useState } from "react";
 import Counter from "../general/Counter";
 
 const BasketClient = () => {
-  const { cartItems, removeFromCart, setCartItems } = useCart();
+  const { cartItems, removeFromCart, setCartItems, confirmOrder } = useCart();
   const [promoCode, setPromoCode] = useState("");
 
   const shippingCost = 10;
@@ -228,9 +228,14 @@ const BasketClient = () => {
                     </span>
                   </p>
                 </div>
-                <button className="bg-green-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase lg:w-full w-[300px] rounded-lg">
-                  Confirm
-                </button>
+                <Link href={"/order"}>
+                  <button
+                    className="bg-green-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase lg:w-full w-[300px] rounded-lg"
+                    onClick={confirmOrder}
+                  >
+                    Confirm
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
