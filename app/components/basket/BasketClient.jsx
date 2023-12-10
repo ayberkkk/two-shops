@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import Counter from "../general/Counter";
+import { CiTrash } from "react-icons/ci";
 
 const BasketClient = () => {
   const { cartItems, removeFromCart, setCartItems, confirmOrder } = useCart();
@@ -81,19 +82,20 @@ const BasketClient = () => {
                 <h3 className="font-semibold text-gray-600 text-xs uppercase w-2/5">
                   Product Details
                 </h3>
-                <h3 className="font-semibold text-gray-600 text-xs uppercase w-1/5">
+                <h3 className="font-semibold text-gray-600 text-xs uppercase lg:w-1/5 w-1/4">
                   Quantity
                 </h3>
-                <h3 className="font-semibold text-gray-600 text-xs uppercase w-1/5">
+                <h3 className="font-semibold text-gray-600 text-xs uppercase w-1/5 lg:block hidden text-center">
                   Price
                 </h3>
-                <h3 className="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">
+                <h3 className="font-semibold text-gray-600 text-xs uppercase lg:w-1/5 w-1/4 text-center">
                   Total
                 </h3>
+                <h3 className="font-semibold text-gray-600 text-xs uppercase lg:w-1/5 w-1/4"></h3>
               </div>
               {cartItems.map((product) => (
                 <div
-                  className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5"
+                  className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5 border-t-2"
                   key={product.id}
                 >
                   <div className="flex w-2/5">
@@ -109,16 +111,10 @@ const BasketClient = () => {
                     </div>
                     <div className="flex flex-col justify-between ml-4 flex-grow">
                       <span className="font-bold text-sm">{product.title}</span>
-                      <button
-                        type="button"
-                        className="font-medium text-red-600 hover:text-red-500 text-start"
-                        onClick={() => removeFromCart(product.id)}
-                      >
-                        Remove
-                      </button>
+                      <span className="font-bold text-sm">{product.brand}</span>
                     </div>
                   </div>
-                  <div className="lg:w-1/5 w-1/6 text-center">
+                  <div className="lg:w-1/5 w-1/6 lg:text-center text-end">
                     <div className="lg:block hidden">
                       <Counter
                         cardProduct={product}
@@ -128,13 +124,41 @@ const BasketClient = () => {
                     </div>
                     <div className="lg:hidden block">{product.quantity}</div>
                   </div>
-                  <span className="text-center w-1/5 font-semibold text-sm flex items-center gap-3">
+                  <span className="text-center lg:w-1/5 w-1/4 font-semibold text-sm items-center gap-3 lg:block hidden">
                     <p className="font-bold text-base">
                       ${product.discountedPrice.toFixed(0)}
                     </p>
                   </span>
-                  <span className="text-center w-1/5 font-semibold text-sm">
-                    ${(product.quantity * product.discountedPrice).toFixed(0)}
+                  <span className="text-center lg:w-1/5 w-1/4">
+                    {product.discountPercentage ? (
+                      <p className="lg:text-center text-end">
+                        <span className="text-red-600 line-through text-sm font-semibold block">
+                          ${(product.quantity * product.price).toFixed(0)}
+                        </span>
+                        <span className="text-green-600 text-lg font-semibold block">
+                          $
+                          {(product.quantity * product.discountedPrice).toFixed(
+                            0
+                          )}
+                        </span>
+                      </p>
+                    ) : (
+                      <p className="text-green-600 text-lg font-semibold lg:text-center text-end">
+                        $
+                        {(product.quantity * product.discountedPrice).toFixed(
+                          0
+                        )}
+                      </p>
+                    )}
+                  </span>
+                  <span className="lg:w-1/5 w-1/4 flex items-center justify-center">
+                    <button
+                      type="button"
+                      className="w-10 h-10 bg-red-500/50 transition ease-in duration-200 hover:bg-red-600 text-white flex items-center justify-center rounded-full"
+                      onClick={() => removeFromCart(product.id)}
+                    >
+                      <CiTrash />
+                    </button>
                   </span>
                 </div>
               ))}
@@ -209,33 +233,25 @@ const BasketClient = () => {
                   </button>
                 </div>
               </div>
-              <div className="border-t mt-8 lg:block flex items-center gap-3">
-                <div className="flex items-center font-semibold justify-between py-6 text-sm uppercase">
-                  <span className="lg:block hidden">Total cost</span>
+              <div className="border-t mt-8 lg:block items-center grid grid-cols-12">
+                <div className="col-span-3 flex items-center lg:justify-start justify-center gap-2 font-semibold py-6 text-sm">
+                  <span className="lg:block hidden">Total cost :</span>
                   <p className="text-end">
-                    <span className="text-gray-500 font-bold text-base line-through">
-                      $
-                      {cartItems
-                        .reduce(
-                          (total, product) =>
-                            total + product.price * product.quantity,
-                          0
-                        )
-                        .toFixed(0)}
-                    </span>
                     <span className="block text-green-500 font-bold text-xl">
                       ${calculateTotalCost().toFixed(0)}
                     </span>
                   </p>
                 </div>
-                <Link href={"/order"}>
-                  <button
-                    className="bg-green-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase lg:w-full w-[300px] rounded-lg"
-                    onClick={confirmOrder}
-                  >
-                    Confirm
-                  </button>
-                </Link>
+                <div className="col-span-9">
+                  <Link href={"/order"} className="w-full">
+                    <button
+                      className="bg-green-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full rounded-lg"
+                      onClick={confirmOrder}
+                    >
+                      Confirm
+                    </button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

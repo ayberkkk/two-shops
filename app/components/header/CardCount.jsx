@@ -34,7 +34,7 @@ export const CardCount = () => {
   const totalDiscount = subtotal - discountedTotal;
   return (
     <div className="md:flex">
-      <div className="relative" onClick={toggleModal}>
+      <div className="relative cursor-pointer" onClick={toggleModal}>
         <CiShoppingBasket size={40} />
         <div className="absolute top-2 -right-1 bg-orange-500 rounded-full w-5 h-5 text-white flex items-center justify-center font-bold">
           {cartItems.length}

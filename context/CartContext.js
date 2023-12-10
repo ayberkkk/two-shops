@@ -1,5 +1,11 @@
 "use client";
-import React, { createContext, useState, useContext, useEffect } from "react";
+import React, {
+  createContext,
+  useState,
+  useContext,
+  useEffect,
+  useRef,
+} from "react";
 import toast, { Toaster } from "react-hot-toast";
 
 const CartContext = createContext();
@@ -60,7 +66,7 @@ const CartProvider = ({ children }) => {
         discountedPrice,
       };
 
-      setCartItems((prev) => [...prev, newItem]);
+      setCartItems([newItem]);
       toast("Product added to cart!", {
         duration: 2000,
         position: "top-right",
@@ -79,7 +85,14 @@ const CartProvider = ({ children }) => {
     });
   };
 
+  const [orders, setOrders] = useState([]);
+  const orderIdCounter = useRef(1);
+
   const confirmOrder = () => {
+    setOrders((prevOrders) => [
+      ...prevOrders,
+      { id: orderIdCounter.current++, items: cartItems, date: new Date() },
+    ]);
     setCartItems([]);
   };
 
@@ -88,9 +101,10 @@ const CartProvider = ({ children }) => {
       value={{
         cartItems,
         setCartItems,
+        orders,
+        confirmOrder,
         addToCart,
         removeFromCart,
-        confirmOrder,
       }}
     >
       {children}
@@ -106,7 +120,14 @@ const useCart = () => {
       "useCart hook must be used within a CartProvider. Make sure you have CartProvider wrapping your component tree."
     );
   }
-  return context;
+  const currentOrder =
+    context.orders.length > 0
+      ? [context.orders[context.orders.length - 1]]
+      : [];
+  return {
+    ...context,
+    orders: currentOrder,
+  };
 };
 
 export { CartProvider, useCart };

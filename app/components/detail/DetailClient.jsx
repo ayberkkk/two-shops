@@ -19,6 +19,7 @@ export default function DetailClient({ product }) {
     price: product.price,
     discountPercentage: product.discountPercentage,
     quantity: 1,
+    brand: product.brand,
     image: product.thumbnail,
     stock: product.stock,
   });
@@ -48,7 +49,7 @@ export default function DetailClient({ product }) {
     <div className="container mx-auto lg:mt-28">
       <div className="grid lg:grid-cols-2">
         <div className="lg:flex block items-center w-full gap-10 relative">
-          <div className="border rounded-md relative -z-10">
+          <div className="border rounded-md relative">
             <Image
               className="lg:w-[600px] lg:h-[500px] w-[500px] h-[400px]"
               width={100}
@@ -65,7 +66,7 @@ export default function DetailClient({ product }) {
                 </div>
               </div>
             )}
-            <div className="thumbnails lg:block flex items-center lg:p-0 p-3  lg:absolute relative overflow-x-auto z-50 top-0 lg:-right-28">
+            <div className="thumbnails lg:block flex items-center lg:p-0 p-3  lg:absolute relative overflow-x-auto z-50 top-0 lg:-right-28 overflow-auto lg:h-[500px]">
               {product.images.map((image, index) => (
                 <img
                   className={`w-[90px] h-[90px] mb-2 cursor-pointer overflow-y-auto p-2 rounded-lg ${
@@ -77,7 +78,7 @@ export default function DetailClient({ product }) {
                   src={image}
                   title={`thumbnail-${index}`}
                   alt={`thumbnail-${index}`}
-                  onClick={() => handleThumbnailClick(index)}
+                  onMouseOver={() => handleThumbnailClick(index)}
                 />
               ))}
             </div>

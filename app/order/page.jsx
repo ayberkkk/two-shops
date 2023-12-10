@@ -1,10 +1,10 @@
 import React from "react";
-import ConfirmOrder from "../components/order/ConfirmOrder";
+import ConfirmOrderClient from "../components/order/ConfirmOrderClient";
 
 const Order = () => {
   return (
     <div>
-      <ConfirmOrder />
+      <ConfirmOrderClient />
     </div>
   );
 };
