@@ -18,7 +18,7 @@ export default function Heading({ center, text }) {
         </Link>
       </div>
 
-      <div className="grid lg:grid-cols-3 grid-cols-2 lg:gap-10 gap-4">
+      <div className="grid lg:grid-cols-4 grid-cols-2 lg:gap-10 gap-4">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

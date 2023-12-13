@@ -63,7 +63,7 @@ const ConfirmOrderClient = () => {
               </div>
               <div className="flex items-center gap-4 mt-3">
                 <Link
-                  href={"/"}
+                  href={"/orderList"}
                   className="bg-green-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full rounded-lg text-center transition-all ease-in duration-200"
                 >
                   Order Details

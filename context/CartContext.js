@@ -86,13 +86,19 @@ const CartProvider = ({ children }) => {
   };
 
   const [orders, setOrders] = useState([]);
+  const [orderHistory, setOrderHistory] = useState([]);
   const orderIdCounter = useRef(1);
 
   const confirmOrder = () => {
-    setOrders((prevOrders) => [
-      ...prevOrders,
-      { id: orderIdCounter.current++, items: cartItems, date: new Date() },
-    ]);
+    const newOrder = {
+      id: orderIdCounter.current++,
+      items: cartItems,
+      date: new Date(),
+    };
+
+    setOrders([newOrder]); // Sadece anlık siparişi güncelle
+    setOrderHistory((prevOrders) => [...prevOrders, newOrder]); // Tüm sipariş geçmişini güncelle
+
     setCartItems([]);
   };
 
@@ -102,6 +108,7 @@ const CartProvider = ({ children }) => {
         cartItems,
         setCartItems,
         orders,
+        orderHistory,
         confirmOrder,
         addToCart,
         removeFromCart,
