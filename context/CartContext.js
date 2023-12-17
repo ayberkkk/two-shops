@@ -66,7 +66,7 @@ const CartProvider = ({ children }) => {
         discountedPrice,
       };
 
-      setCartItems([newItem]);
+      setCartItems((prevCartItems) => [...prevCartItems, newItem]);
       toast("Product added to cart!", {
         duration: 2000,
         position: "top-right",
@@ -87,6 +87,25 @@ const CartProvider = ({ children }) => {
 
   const [orders, setOrders] = useState([]);
   const [orderHistory, setOrderHistory] = useState([]);
+
+  useEffect(() => {
+    if (isLocalStorageAvailable()) {
+      localStorage.setItem("orderHistory", JSON.stringify(orderHistory));
+    }
+  }, [orderHistory]);
+
+  useEffect(() => {
+    if (isLocalStorageAvailable()) {
+      try {
+        const storedOrderHistory =
+          JSON.parse(localStorage.getItem("orderHistory")) || [];
+        setOrderHistory(storedOrderHistory);
+      } catch (error) {
+        console.error("Error parsing order history from localStorage:", error);
+      }
+    }
+  }, []);
+
   const orderIdCounter = useRef(1);
 
   const confirmOrder = () => {
@@ -96,8 +115,15 @@ const CartProvider = ({ children }) => {
       date: new Date(),
     };
 
-    setOrders([newOrder]); // Sadece anlık siparişi güncelle
-    setOrderHistory((prevOrders) => [...prevOrders, newOrder]); // Tüm sipariş geçmişini güncelle
+    if (isLocalStorageAvailable()) {
+      localStorage.setItem(
+        "orderHistory",
+        JSON.stringify([...orderHistory, newOrder])
+      );
+    }
+
+    setOrders([newOrder]);
+    setOrderHistory((prevOrders) => [...prevOrders, newOrder]);
 
     setCartItems([]);
   };
